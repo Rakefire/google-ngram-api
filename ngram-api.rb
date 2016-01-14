@@ -1,11 +1,22 @@
-require 'sinatra'
-require 'sinatra/cross_origin'
+require 'sinatra/base'
+require 'pry'
 require 'mechanize'
 require './google_ngrams.rb'
 
 class NgramApi < Sinatra::Base
+
+  use Rack::Cors do
+    allow do
+      origins  "*"
+      resource "*", headers: :any, methods: [:get, :options]
+    end
+  end
+
+  before do
+    response["Content-Type"] = "application/json"
+  end
+
   get '/ngrams' do
-    cross_origin
     JSON.generate(GoogleNgrams.new(params).fetch)
   end
 
