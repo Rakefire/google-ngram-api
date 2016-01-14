@@ -9,6 +9,13 @@ require app_file
 set :environment, ENV['RACK_ENV'].to_sym
 set :root,        root_dir
 set :app_file,    app_file
+
+set :allow_origin, :any
+set :allow_methods, [:get, :post, :options]
+set :allow_credentials, true
+set :max_age, "1728000"
+set :expose_headers, ['Content-Type']
+
 disable :run
 
 NgramApi.run!

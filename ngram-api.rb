@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/cross_origin'
 require 'mechanize'
 require './google_ngrams.rb'
 
