@@ -1,5 +1,4 @@
 require 'sinatra/base'
-require 'pry'
 require 'mechanize'
 require './google_ngrams.rb'
 
