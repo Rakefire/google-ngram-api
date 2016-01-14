@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'mechanize'
-require 'pry'
 require './google_ngrams.rb'
 
 class NgramApi < Sinatra::Base
