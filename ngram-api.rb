@@ -4,7 +4,7 @@ require 'pry'
 require './google_ngrams.rb'
 
 class NgramApi < Sinatra::Base
-  get '/ngram' do
+  get '/ngrams' do
     JSON.generate(GoogleNgrams.new(params).fetch)
   end
 

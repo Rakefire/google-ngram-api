@@ -76,7 +76,7 @@ class GoogleNgramsUrlBuilder
 
   # if the api sees a 'case_insensitive' param it will be case insensitive
   def case_insensitivity
-    if url_params[:case_insensitive] == true
+    if url_params[:case_insensitive] == "true"
       "&case_insensitive=on"
     else
       ""
