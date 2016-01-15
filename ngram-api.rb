@@ -16,7 +16,13 @@ class NgramApi < Sinatra::Base
   end
 
   get '/ngrams' do
-    JSON.generate(GoogleNgrams.new(params).fetch)
+    JSON.generate(first_timeseries(GoogleNgrams.new(params).fetch))
+  end
+
+  private
+
+  def first_timeseries(results)
+    results.first["timeseries"]
   end
 
   # start the server if ruby file executed directly
