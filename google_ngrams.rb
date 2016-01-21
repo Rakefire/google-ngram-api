@@ -55,28 +55,28 @@ class GoogleNgramsUrlBuilder
   end
 
   def contentArray
-    if url_params[:content].nil?
+    if url_params['content'].nil?
       ["Albert"]
     else
-      CGI.unescape(url_params[:content]).split(',')
+      CGI.unescape(url_params['content']).split(',')
     end
   end
 
   def year_start
-    Integer(url_params.fetch(:year_start, 1800))
+    Integer(url_params.fetch('year_start', 1800))
   end
 
   def year_end
-    Integer(url_params.fetch(:year_end, 2000))
+    Integer(url_params.fetch('year_end', 2000))
   end
 
   def smoothing
-    Integer(url_params.fetch(:smoothing, 3))
+    Integer(url_params.fetch('smoothing', 3))
   end
 
   # if the api sees a 'case_insensitive' param it will be case insensitive
   def case_insensitivity
-    if url_params[:case_insensitive] == "true"
+    if url_params['case_insensitive'] == "true"
       "&case_insensitive=on"
     else
       ""

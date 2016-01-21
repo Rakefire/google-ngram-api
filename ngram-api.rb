@@ -3,11 +3,17 @@ require 'mechanize'
 require './google_ngrams.rb'
 
 class NgramApi < Sinatra::Base
-
+  use Rack::Logger
   use Rack::Cors do
     allow do
       origins  "*"
       resource "*", headers: :any, methods: [:get, :options]
+    end
+  end
+  
+  helpers do
+    def logger
+      request.logger
     end
   end
 
@@ -16,6 +22,8 @@ class NgramApi < Sinatra::Base
   end
 
   get '/ngrams' do
+    logger.info GoogleNgramsUrlBuilder.new(params).url
+
     JSON.generate(first_timeseries(GoogleNgrams.new(params).fetch))
   end
 
